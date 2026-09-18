@@ -1,0 +1,37 @@
+# config.yaml for Binance Testnet trading bot (auto‑generated skeleton)
+# Replace the placeholder values with your actual Binance testnet credentials before running.
+
+binance:
+  api_key: "YOUR_BINANCE_TESTNET_API_KEY"
+  api_secret: "YOUR_BINANCE_TESTNET_API_SECRET"
+  base_url: "https://testnet.binance.vision"
+
+risk:
+  # % of current equity to risk per trade (e.g., 0.5 means 0.5% of equity per trade)
+  max_risk_per_trade_pct: 0.5
+  # Daily loss limit as % of equity – when exceeded, no new trades are taken for the day.
+  daily_loss_limit_pct: 2.0
+  # Drawdown ladder – thresholds are % of equity peak.
+  drawdown_levels:
+    - threshold: 3.0
+      action: "log"
+    - threshold: 5.0
+      action: "reduce_position"
+    - threshold: 10.0
+      action: "halt_new_strategies"
+    - threshold: 15.0
+      action: "kill_switch"
+
+trade:
+  # Quantity to trade per order – keep it small on testnet.
+  amount: 0.001
+  symbols:
+    - "BTCUSDT"
+  interval: "1m"
+
+learning:
+  epsilon: 0.2
+
+strategies:
+  enabled:
+    - "MovingAverageStrategy"

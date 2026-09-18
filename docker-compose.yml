@@ -1,0 +1,25 @@
+# docker-compose.yml for running the bot + Flask dashboard together
+# Use this if you want to containerise both the back‑end and the web UI.
+# The bot runs as a one‑shot process (or you can replace it with a scheduler).
+version: '3.8'
+services:
+  bot:
+    build: .
+    command: python -m bot.trading_bot
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - .:/app
+    depends_on:
+      - dashboard
+  dashboard:
+    build: .
+    command: python -m bot.dashboard
+    ports:
+      - "8000:8000"
+    environment:
+      - FLASK_ENV=development
+    volumes:
+      - .:/app
+    depends_on:
+      - bot
