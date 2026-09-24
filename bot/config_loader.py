@@ -10,7 +10,7 @@ class ConfigLoader:
     It contains Binance API credentials, a list of symbols to trade, trading parameters,
     and the list of enabled strategy class names.
     """
-    def __init__(self, config_path: str = "C:/Users/amar7/trading_bot/config/config.yaml"):
+    def __init__(self, config_path: str = "C:/Users/amar7/trademach/config/config.yaml"):
         self.config_path = config_path
         self.config: Dict[str, Any] = {}
         self._load()

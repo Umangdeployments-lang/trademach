@@ -21,3 +21,6 @@ def get_logger(name: str = "trading_bot") -> logging.Logger:
         fh.setFormatter(fmt)
         logger.addHandler(fh)
     return logger
+
+# Export a default module‑level logger for quick imports
+logger = get_logger()

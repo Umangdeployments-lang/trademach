@@ -2,8 +2,8 @@
 # Replace the placeholder values with your actual Binance testnet credentials before running.
 
 binance:
-  api_key: "YOUR_BINANCE_TESTNET_API_KEY"
-  api_secret: "YOUR_BINANCE_TESTNET_API_SECRET"
+  api_key: "pMeN9PjJlSZris32gQWB6IBTlSw1dVmiFgV0Ilr7dIk1WpVqXqETyMLr6dZU7jjD"
+  api_secret: "XHF7w5s6OrnJY3LlFR1dqspidpKFuJobJetIToi93Oz4uCw6tLyU934TaYCP8whQ"
   base_url: "https://testnet.binance.vision"
 
 risk:
@@ -30,8 +30,8 @@ trade:
   interval: "1m"
 
 learning:
-  epsilon: 0.2
+  epsilon: 0
 
 strategies:
   enabled:
-    - "MovingAverageStrategy"
+    - "RandomStrategy"

@@ -1,6 +1,7 @@
 import pandas as pd
+from ..strategy_base import StrategyBase
 
-class MovingAverageStrategy:
+class MovingAverageStrategy(StrategyBase):
     """Simple SMA crossover strategy.
     
     Parameters
@@ -10,7 +11,7 @@ class MovingAverageStrategy:
     long_window : int
         Period for the long-term SMA.
     """
-    def __init__(self, short_window: int = 7, long_window: int = 21):
+    def __init__(self, short_window: int = 2, long_window: int = 3):
         self.short_window = short_window
         self.long_window = long_window
         if self.short_window >= self.long_window:
@@ -38,7 +39,7 @@ class MovingAverageStrategy:
         curr_short = recent["sma_short"].iloc[1]
         curr_long = recent["sma_long"].iloc[1]
 
-        if pd.isna(prev_short) or pd.isna(prev_long) or pd.isnan(curr_short) or pd.isnan(curr_long):
+        if pd.isna(prev_short) or pd.isna(prev_long) or pd.isna(curr_short) or pd.isna(curr_long):
             return "HOLD"
         # Detect crossover
         if prev_short <= prev_long and curr_short > curr_long:
@@ -48,4 +49,4 @@ class MovingAverageStrategy:
         return "HOLD"
 
     def __repr__(self) -> str:
-        return f"MovingAverageStrategy(short={self.short_window}, long={self.long_window})"
+            return f"MovingAverageStrategy(short={self.short_window}, long={self.long_window}) # Rating: {self.rating:.1f}/10"
